@@ -1,0 +1,18 @@
+{
+  "airlines": [
+    {
+      "name": "Indigo",
+      "logo": "C:\\fakepath\\indigo_logo.png",
+      "contactNumber": 99999999,
+      "contactAddress": "bangalore",
+      "id": 1
+    },
+    {
+      "name": "GoAir",
+      "logo": "C:\\fakepath\\indigo_logo.png",
+      "contactNumber": 47384934,
+      "contactAddress": "Chennai",
+      "id": 2
+    }
+  ]
+}

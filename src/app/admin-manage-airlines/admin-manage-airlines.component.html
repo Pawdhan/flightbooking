@@ -1,0 +1,58 @@
+
+<br/>
+<div class="row col-12">
+    <div class="col-4">&nbsp;</div>
+    <div class="col-2">Airline Name:</div>
+    <div class="col-2"><input [(ngModel)]="airline.name"></div>
+    <div class="col-4">&nbsp;</div>
+</div>
+<br/>
+<div class="row col-12">
+    <div class="col-4">&nbsp;</div>
+    <div class="col-2">Upload Logo: </div>
+    <div class="col-2"><input type="file" [(ngModel)]="airline.logo"></div>
+    <div class="col-4">&nbsp;</div>
+</div>
+<br/>
+<div class="row col-12">
+    <div class="col-4">&nbsp;</div>
+    <div class="col-2">Contact No: </div>
+    <div class="col-2"><input type="number" [(ngModel)]="airline.contactNumber">    </div>
+    <div class="col-4">&nbsp;</div>
+</div>
+<br/>
+<div class="row col-12">
+    <div class="col-4">&nbsp;</div>
+    <div class="col-2">Contact Address: </div>
+    <div class="col-2"><input type="text" [(ngModel)]="airline.contactAddress"></div>
+    <div class="col-4">&nbsp;</div>
+</div>
+
+<br/><br/>
+
+<div class="row col-12">
+    <div class="col-5">&nbsp;</div>
+    <div class="col-2"><button (click)='addAirline()'>Add New Airline</button></div>
+    <div class="col-5">&nbsp;</div>
+</div>
+<br/><br/>
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Logo</th>
+                <th>Name</th>
+                <th>Contact Number</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let air of airlines">
+                <td><img [src]="air.logo" class="mr-2" style="width: 20px"></td>
+                <td>{{air.name}}</td>
+                <td>{{air.contactNumber}}</td>
+                <td>{{air.contactAddress}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,77 @@
+<br/><br/>
+
+<div class="row col-12">
+    <div class="col-2">&nbsp;</div>
+    <div class="col-4"><input type="radio" name="trip" value="ONE_WAY" [(ngModel)]='trip'>&nbsp;One way</div>
+    <div class="col-4"><input type="radio" name="trip" value="ROUND_TRIP" [(ngModel)]='trip'>&nbsp;Round trip</div>
+    <div class="col-2">&nbsp;</div>
+</div>
+<br/>
+<div class="row col-12">
+    <div class="col-2">&nbsp;</div>
+    <div class="col-4">From: <input [(ngModel)]="from"></div>
+    <div class="col-4">To: <input [(ngModel)]="to"></div>
+    <div class="col-2">&nbsp;</div>
+</div>
+<br/>
+<div class="row col-12">
+    <div class="col-2">&nbsp;</div>
+    <div class="col-4">Onward Journey: <input type="date" [(ngModel)]='fromDate'></div>
+    <div class="col-4">Return Journey: <input type="date" [(ngModel)]='toDate'></div>
+    <div class="col-2">&nbsp;</div>
+</div>
+<br/>
+<br/>
+
+<div class="row col-md-12">
+    <div class="col-md-6">
+
+        <div class="container">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Airline</th>
+                        <th>Logo</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Indigo</td>
+                        <td>Logo</td>
+                        <td>Rs 3000</td>
+                    </tr>
+                    <tr>
+                        <td>Indigo</td>
+                        <td>Logo</td>
+                        <td>Rs 3000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div class="col-md-6">
+        
+        <div class="container">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Logo</th>
+                        <th>Name</th>
+                        <th>Contact Number</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>logo</td>
+                        <td>Indigo</td>
+                        <td>948488484</td>
+                        <td>Bangalore</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

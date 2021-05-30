@@ -1,0 +1,65 @@
+<div *ngIf="!search">
+  <br/>
+  <div class="row col-12">
+      <div class="col-4">&nbsp;</div>
+      <div class="col-2">Select Airline: </div>
+      <div class="col-2">
+              <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Select</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <button ngbDropdownItem>Indigo</button>
+                  <button ngbDropdownItem>GoAir</button>
+                </div>
+              </div>
+      </div>
+      <div class="col-4">&nbsp;</div>
+  </div>
+  <br/>
+  <div class="row col-12">
+      <div class="col-4">&nbsp;</div>
+      <div class="col-2">Flight Number: </div>
+      <div class="col-2"><input type="file" [(ngModel)]="flightNumber"></div>
+      <div class="col-4">&nbsp;</div>
+  </div>
+  <br/>
+  <div class="row col-12">
+      <div class="col-4">&nbsp;</div>
+      <div class="col-2">Instrument Used: </div>
+      <div class="col-2"><input type="number" [(ngModel)]="instrument">    </div>
+      <div class="col-4">&nbsp;</div>
+  </div>
+  <br/>
+  
+  <div class="row col-12">
+    <div class="col-5">&nbsp;</div>
+    <div class="col-2"><button (click)='searchResults()'>Search</button></div>
+    <div class="col-5">&nbsp;</div>
+</div>
+  <br/><br/>
+
+</div>
+<div *ngIf="search">
+<h4 style="text-align: center;">Search Results</h4>
+<br/><br/>
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Logo</th>
+                <th>Name</th>
+                <th>Contact Number</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let air of airlines">
+                <td><img [src]="air.logo" class="mr-2" style="width: 20px"></td>
+                <td>{{air.name}}</td>
+                <td>{{air.contactNumber}}</td>
+                <td>{{air.contactAddress}}</td>
+                <td><button> Schedule Details</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
