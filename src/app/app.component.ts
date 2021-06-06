@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Globals } from './Globals';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   active = 1;
-  selectedRole: string = "";
+  constructor(public globals: Globals) {
+    this.globals.role = "";
+    this.globals.validated = false;
+  }
   onSelect(value: string) {
-    console.log('val: '+value);
-    this.selectedRole = value;
+    this.globals.role = value;
+  }
+
+  logOut() {
+    this.globals.validated = false;
+    this.globals.role = "";
   }
 }

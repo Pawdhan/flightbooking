@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminManageAirlinesComponent } from './admin-manage-airlines/admin-manage-airlines.component';
 import { AdminManageSchedulesComponent } from './admin-manage-schedules/admin-manage-schedules.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import { UserBookFlightComponent } from './user-book-flight/user-book-flight.component';
 import { UserBookingHistoryComponent } from './user-booking-history/user-booking-history.component';
 import { UserManageBookingsComponent } from './user-manage-bookings/user-manage-bookings.component';
@@ -11,8 +12,13 @@ import { UserManageBookingsComponent } from './user-manage-bookings/user-manage-
 const routes: Routes = [
 
   {
-    path: '',
+    path: 'login',
     component: LoginComponent
+
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
 
   },
   {

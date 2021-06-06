@@ -1,14 +1,14 @@
-<div *ngIf="selectedRole==''">
+<div *ngIf="globals.role==''">
   <br/><br/><br/><br/><br/>
   <div class="row col-12">
     <div class="col-4">&nbsp;</div>
-    <div class="col-2"><button (click)='onSelect("ADMIN")'>Admin</button>&nbsp;</div>
-    <div class="col-2"><button (click)='onSelect("USER")'>User</button></div>
+    <div class="col-2"><button (click)='onSelect("ADMIN")'><a routerLink="/login">Admin</a></button>&nbsp;</div>
+    <div class="col-2"><button (click)='onSelect("USER")'><a routerLink="/login">User</a></button></div>
     <div class="col-4">&nbsp;</div>
   </div>
 </div>
 
-<div *ngIf="selectedRole=='ADMIN'">
+<div *ngIf="globals.role=='ADMIN' && globals.validated">
   <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs" style="padding: 1%;">
     <li style="width: 15%; font-size: large;">
       <b>Flight Booking</b>
@@ -20,12 +20,12 @@
       <a routerLink="/manageairlines">Manage Airlines</a>
     </li>
     <li [ngbNavItem]="3" style="width: 55%; text-align: right;">
-      <button (click)='onSelect("")'> <a routerLink="/">Log out</a></button>
+      <button (click)='logOut()'> <a routerLink="/">Log out</a></button>
     </li>
   </ul>
 </div>
 
-<div *ngIf="selectedRole=='USER'">
+<div *ngIf="globals.role=='USER' && globals.validated">
   <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs" style="padding: 1%;">
     <li style="width: 15%; font-size: large;">
       <b>Flight Booking</b>
@@ -40,7 +40,7 @@
       <a routerLink="/bookinghistory">Booking History</a>
     </li>
     <li [ngbNavItem]="3" style="width: 45%; text-align: right;">
-      <button (click)='onSelect("")'> <a routerLink="/">Log out</a></button>
+      <button (click)='logOut()'> <a routerLink="/">Log out</a></button>
     </li>
   </ul>
   
