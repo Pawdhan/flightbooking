@@ -24,10 +24,10 @@ export class AdminManageAirlinesComponent implements OnInit {
 
   addAirline() {
     this.flightBookingService.addAirline(this.airline).subscribe(response =>{
-      alert('New Airline added successfully.')
+      alert('New Airline added successfully.');
       this.getAirlines();
     }, error =>{
-      alert('Error while adding airline: '+ error.message);
+      alert('Error while adding airline: '+ error.error.message);
     })
   }
 }

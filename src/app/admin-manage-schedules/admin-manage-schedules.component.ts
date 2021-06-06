@@ -19,7 +19,7 @@ export class AdminManageSchedulesComponent implements OnInit {
   }
   searchResults() {
     this.search = true;
-    this.flightBookingService.searchBySchedule(this.flightNumber, this.airline, this.instrument)
+    this.flightBookingService.searchBySchedule(this.flightNumber, this.instrument)
     .subscribe(res => {
       this.airlines = res as Airline[];
     })

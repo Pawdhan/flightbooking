@@ -18,7 +18,7 @@
   <div class="row col-12">
       <div class="col-4">&nbsp;</div>
       <div class="col-2">Flight Number: </div>
-      <div class="col-2"><input type="file" [(ngModel)]="flightNumber"></div>
+      <div class="col-2"><input type="number" [(ngModel)]="flightNumber"></div>
       <div class="col-4">&nbsp;</div>
   </div>
   <br/>
@@ -54,7 +54,7 @@
         <tbody>
             <tr *ngFor="let air of airlines">
                 <td><img [src]="air.logo" class="mr-2" style="width: 20px"></td>
-                <td>{{air.name}}</td>
+                <td>{{air.airline}}</td>
                 <td>{{air.contactNumber}}</td>
                 <td>{{air.contactAddress}}</td>
                 <td><button> Schedule Details</button></td>

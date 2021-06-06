@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
     this.user.name = this.f.name.value;
     this.user.password = this.f.password.value;
     this.flightService.registerUser(this.user).subscribe(res => {
-      alert("Login successfull!");
+      alert("Registered successfully!");
       this.submitted = true;
       this.router.navigate(['/login']);
     }, error => {

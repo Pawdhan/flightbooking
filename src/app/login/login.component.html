@@ -20,7 +20,7 @@
             <button (click)="onSubmit()" class="btn btn-primary">
                 Login
             </button>
-            <a routerLink="/register" class="btn btn-link">Register</a>
+            <a *ngIf="global.role == 'USER'" routerLink="/register" class="btn btn-link">Register</a>
         </div>
     </form>
 
