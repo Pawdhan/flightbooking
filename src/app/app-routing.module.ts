@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminAddScheduleComponent } from './admin-add-schedule/admin-add-schedule.component';
 import { AdminManageAirlinesComponent } from './admin-manage-airlines/admin-manage-airlines.component';
 import { AdminManageSchedulesComponent } from './admin-manage-schedules/admin-manage-schedules.component';
 import { LoginComponent } from './login/login.component';
@@ -29,6 +30,11 @@ const routes: Routes = [
   {
     path: 'manageschedules',
     component: AdminManageSchedulesComponent
+
+  },
+  {
+    path: 'addschedule',
+    component: AdminAddScheduleComponent
 
   },
   {

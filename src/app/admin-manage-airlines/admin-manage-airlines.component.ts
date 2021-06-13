@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import Airline from '../entity/Airline';
 import { FlightBookingService } from '../flight-booking-service';
 
@@ -10,7 +11,7 @@ import { FlightBookingService } from '../flight-booking-service';
 export class AdminManageAirlinesComponent implements OnInit {
   airline: Airline = new Airline();
   airlines: Airline[]= [];
-  constructor(private flightBookingService: FlightBookingService) { }
+  constructor(private flightBookingService: FlightBookingService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAirlines();
@@ -29,5 +30,11 @@ export class AdminManageAirlinesComponent implements OnInit {
     }, error =>{
       alert('Error while adding airline: '+ error.error.message);
     })
+  }
+
+  addSchedule(flightNumber: number) {
+    this.router.navigate(['/addschedule'], { queryParams: {flightNumber : flightNumber} });
+
+
   }
 }

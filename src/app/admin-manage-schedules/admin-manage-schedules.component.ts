@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Airline from '../entity/Airline';
+import { AirlineSchedule } from '../entity/AirlineSchedule';
 import { FlightBookingService } from '../flight-booking-service';
 
 @Component({
@@ -9,19 +10,23 @@ import { FlightBookingService } from '../flight-booking-service';
 })
 export class AdminManageSchedulesComponent implements OnInit {
   search = false;
-  airline: string = "";
+  selectedAirline: string = "";
   flightNumber!: number;
   instrument: string = "";
-  airlines: Airline[] = [];
+  airlines: String[] = ['Indigo', 'GoAir'];
+  airlineSchedules: AirlineSchedule[] = [];
   constructor(private flightBookingService: FlightBookingService) { }
 
   ngOnInit(): void {
   }
   searchResults() {
     this.search = true;
-    this.flightBookingService.searchBySchedule(this.flightNumber, this.instrument)
+    this.selectedAirline = 'Indigo';
+    this.flightNumber = 1;
+    this.instrument = 'Texas';
+    this.flightBookingService.searchBySchedule(this.selectedAirline, this.flightNumber, this.instrument)
     .subscribe(res => {
-      this.airlines = res as Airline[];
+      this.airlineSchedules = res as AirlineSchedule[];
     })
   }
 }

@@ -1,0 +1,114 @@
+<!-- main app container -->
+<div class="card m-3">
+    <h5 class="card-header">Add Schedule</h5>
+    <div class="card-body">
+        <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit()">
+            
+            <div class="form-row">
+               
+                <div class="form-group col-6">
+                    <label>From</label>
+                    <input type="text" formControlName="fromPlace" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fromPlace.errors }" />
+                    <div *ngIf="submitted && f.fromPlace.errors" class="invalid-feedback">
+                        <div *ngIf="f.fromPlace.errors.required">From Place is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-6">
+                    <label>To</label>
+                    <input type="text" formControlName="toPlace" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.toPlace.errors }" />
+                    <div *ngIf="submitted && f.toPlace.errors" class="invalid-feedback">
+                        <div *ngIf="f.toPlace.errors.required">To Place is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">               
+                <div class="form-group col-6">
+                    <label>Start Date</label>
+                    <input type="date" formControlName="startDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }" />
+                    <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
+                        <div *ngIf="f.startDate.errors.required">Start Date is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-6">
+                    <label>End Date</label>
+                    <input type="date" formControlName="endDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }" />
+                    <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
+                        <div *ngIf="f.endDate.errors.required">End Date is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">               
+                <div class="form-group col-6">
+                    <label>Start Time</label>
+                    <input type="time" formControlName="startTime" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.startTime.errors }" />
+                    <div *ngIf="submitted && f.startTime.errors" class="invalid-feedback">
+                        <div *ngIf="f.startTime.errors.required">Start Time is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-6">
+                    <label>End Time</label>
+                    <input type="time" formControlName="endTime" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.endTime.errors }" />
+                    <div *ngIf="submitted && f.endTime.errors" class="invalid-feedback">
+                        <div *ngIf="f.endTime.errors.required">End Time is required</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label>Instrument Used</label>
+                <input type="text" formControlName="instrumentUsed" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.instrumentUsed.errors }" />
+                <div *ngIf="submitted && f.instrumentUsed.errors" class="invalid-feedback">
+                    <div *ngIf="f.instrumentUsed.errors.required">Instrument Used is required</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Number of Rows</label>
+                <input type="text" formControlName="noOfRows" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.noOfRows.errors }" />
+                <div *ngIf="submitted && f.noOfRows.errors" class="invalid-feedback">
+                    <div *ngIf="f.noOfRows.errors.required">Number of rows is required</div>
+                </div>
+            </div>
+
+            <div class="form-row">               
+                <div class="form-group col-6">
+                    <label>Bussiness Class Seats</label>
+                <input type="text" formControlName="businessClassSeats" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.businessClassSeats.errors }" />
+                <div *ngIf="submitted && f.businessClassSeats.errors" class="invalid-feedback">
+                    <div *ngIf="f.businessClassSeats.errors.required">Bussiness Class Seats is required</div>
+                </div>
+                </div>
+                <div class="form-group col-6">
+                    <label>Non Bussiness Class Seats</label>
+                    <input type="text" formControlName="nonBusinessClassSeats" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nonBusinessClassSeats.errors }" />
+                    <div *ngIf="submitted && f.nonBusinessClassSeats.errors" class="invalid-feedback">
+                        <div *ngIf="f.nonBusinessClassSeats.errors.required">Non Bussiness Class Seats is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Meal</label>
+                <input type="text" formControlName="meal" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.meal.errors }" />
+                <div *ngIf="submitted && f.meal.errors" class="invalid-feedback">
+                    <div *ngIf="f.meal.errors.required">Meal is required</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Cost</label>
+                <input type="number" formControlName="cost" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cost.errors }" />
+                <div *ngIf="submitted && f.cost.errors" class="invalid-feedback">
+                    <div *ngIf="f.cost.errors.required">Cost is required</div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-primary mr-1">Add</button>
+                <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

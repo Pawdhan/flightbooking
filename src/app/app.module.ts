@@ -18,6 +18,10 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md';
 import { RegisterComponent } from './register/register.component'
 import { Globals } from './Globals';
+import { AdminAddScheduleComponent } from './admin-add-schedule/admin-add-schedule.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSelectModule} from '@angular/material/select';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,12 +31,13 @@ import { Globals } from './Globals';
     AdminManageSchedulesComponent,
     AdminManageAirlinesComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdminAddScheduleComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, FormsModule, HttpClientModule, NgbModule, MDBBootstrapModule.forRoot(),
-    NavbarModule, WavesModule, ButtonsModule, ReactiveFormsModule
+    NavbarModule, WavesModule, ButtonsModule, ReactiveFormsModule, BrowserAnimationsModule, MatSelectModule
     ],
   providers: [FlightBookingService, Globals],
   bootstrap: [AppComponent]

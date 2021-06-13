@@ -49,8 +49,17 @@ export  class FlightBookingService {
         });
     }
 
-    searchBySchedule(flightNumber: number, instrument: string) {
-        return this.http.get(BASE_URL + 'airline/getairlineSchedules/' + flightNumber + '/' + instrument);
+    searchBySchedule(airline: string, flightNumber: number, instrument: string) {
+        const params = new HttpParams();
+        params.append('airline', airline);
+        params.append('flightnumber', flightNumber);
+        params.append('instrument', instrument);
+        console.log('params:' + params);
+        return this.http.get(BASE_URL + 'airline/getschedulesbyfilter?' + params);
     }
 
+    getFlightByFlightNumber(flightNumber: number) {
+        return this.http.get(BASE_URL + 'airline/getairlinebyflightnumber/' + flightNumber);
+
+    }
 }

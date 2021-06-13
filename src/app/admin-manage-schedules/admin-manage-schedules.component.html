@@ -4,13 +4,13 @@
       <div class="col-4">&nbsp;</div>
       <div class="col-2">Select Airline: </div>
       <div class="col-2">
-              <div ngbDropdown class="d-inline-block">
-                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Select</button>
-                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                  <button ngbDropdownItem>Indigo</button>
-                  <button ngbDropdownItem>GoAir</button>
-                </div>
-              </div>
+        <mat-form-field>
+            <mat-select name="airline" [(value)]="selectedAirline" placeholder="Select">
+              <mat-option *ngFor="let airline of airlines" [value]="airline">
+                {{airline}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>      
       </div>
       <div class="col-4">&nbsp;</div>
   </div>
@@ -25,7 +25,7 @@
   <div class="row col-12">
       <div class="col-4">&nbsp;</div>
       <div class="col-2">Instrument Used: </div>
-      <div class="col-2"><input type="number" [(ngModel)]="instrument">    </div>
+      <div class="col-2"><input type="text" [(ngModel)]="instrument">    </div>
       <div class="col-4">&nbsp;</div>
   </div>
   <br/>
@@ -41,23 +41,27 @@
 <div *ngIf="search">
 <h4 style="text-align: center;">Search Results</h4>
 <br/><br/>
-<div class="container">
+<div class="container" *ngIf="airlineSchedules && airlineSchedules.length > 0">
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
-                <th>Logo</th>
-                <th>Name</th>
-                <th>Contact Number</th>
-                <th>Address</th>
+                <th>Airline</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Cost</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let air of airlines">
-                <td><img [src]="air.logo" class="mr-2" style="width: 20px"></td>
+            <tr *ngFor="let air of airlineSchedules">
                 <td>{{air.airline}}</td>
-                <td>{{air.contactNumber}}</td>
-                <td>{{air.contactAddress}}</td>
-                <td><button> Schedule Details</button></td>
+                <td>{{air.fromPlace}}</td>
+                <td>{{air.toPlace}}</td>
+                <td>{{air.startDate}} {{air.startTime}}</td>
+                <td>{{air.endDate}}{{air.endTime}}</td>
+                <td>{{air.cost}}</td>
             </tr>
         </tbody>
     </table>
