@@ -13,20 +13,35 @@ export class AdminManageSchedulesComponent implements OnInit {
   selectedAirline: string = "";
   flightNumber!: number;
   instrument: string = "";
-  airlines: String[] = ['Indigo', 'GoAir'];
+  airlines: String[] = [];
   airlineSchedules: AirlineSchedule[] = [];
   constructor(private flightBookingService: FlightBookingService) { }
 
   ngOnInit(): void {
+    this.getAirlines();
   }
+
+  getAirlines() {
+    this.flightBookingService.getListOfAirlines().subscribe(res => {
+      this.airlines = res as String[];
+    }, error => {
+      console.log('No flights found');
+    });
+  }
+
   searchResults() {
     this.search = true;
-    this.selectedAirline = 'Indigo';
-    this.flightNumber = 1;
-    this.instrument = 'Texas';
     this.flightBookingService.searchBySchedule(this.selectedAirline, this.flightNumber, this.instrument)
     .subscribe(res => {
       this.airlineSchedules = res as AirlineSchedule[];
     })
+  }
+
+  clearSearch() {
+    this.search = false;
+    this.selectedAirline = "";
+    this.flightNumber = 0;
+    this.instrument = "";
+    this.airlineSchedules = [];
   }
 }

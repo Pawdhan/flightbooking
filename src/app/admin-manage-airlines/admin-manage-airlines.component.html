@@ -44,6 +44,7 @@
             <tr>
                 <th>Logo</th>
                 <th>Name</th>
+                <th>Flight Number</th>
                 <th>Contact Number</th>
                 <th>Address</th>
             </tr>
@@ -52,6 +53,7 @@
             <tr *ngFor="let air of airlines">
                 <td><img [src]="air.logo" class="mr-2" style="width: 20px"></td>
                 <td>{{air.airline}}</td>
+                <td>{{air.flightNumber}}</td>
                 <td>{{air.contactNumber}}</td>
                 <td>{{air.contactAddress}}</td>
                 <td><button (click)="addSchedule(air.flightNumber)">Add Schedule</button></td>

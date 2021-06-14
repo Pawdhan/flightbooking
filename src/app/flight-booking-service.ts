@@ -3,14 +3,14 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import Airline from './entity/Airline';
 import { Admin, User } from './entity/User';
 import { AirlineSchedule } from './entity/AirlineSchedule';
-const BASE_URL = "http://localhost:8989/api/v1.0/flight/";
+const BASE_URL = "http://localhost:8282/admin/";
 @Injectable()//Bean
 export  class FlightBookingService {
 
     constructor(private http: HttpClient) { }
     
     adminLogin(admin: Admin) {
-        return this.http.post(BASE_URL + 'admin/login', admin, {
+        return this.http.post(BASE_URL + 'flight/login', admin, {
             headers: {
                 "content-type": "application/json"
             }
@@ -18,11 +18,11 @@ export  class FlightBookingService {
     }
     
     loginUser(email: String, password: String) {
-        return this.http.get(BASE_URL + 'admin/usersignin/' + email + "/" + password);
+        return this.http.get(BASE_URL + 'flight/usersignin/' + email + "/" + password);
     }
     
     registerUser(user: User) {
-        return this.http.post(BASE_URL + 'admin/usersignup', user, {
+        return this.http.post(BASE_URL + 'flight/usersignup', user, {
             headers: {
                 "content-type": "application/json"
             }
@@ -31,6 +31,10 @@ export  class FlightBookingService {
     
     getAirlines() {
         return this.http.get(BASE_URL + 'airline/getairlines');
+    }
+
+    getListOfAirlines() {
+        return this.http.get(BASE_URL + 'airline/getlistofairlines');
     }
 
     addAirline(airline: Airline) {
@@ -50,11 +54,11 @@ export  class FlightBookingService {
     }
 
     searchBySchedule(airline: string, flightNumber: number, instrument: string) {
-        const params = new HttpParams();
-        params.append('airline', airline);
-        params.append('flightnumber', flightNumber);
-        params.append('instrument', instrument);
-        console.log('params:' + params);
+        let params = new HttpParams();
+        params=params.append('airline', airline);
+        params=params.append('flightnumber', flightNumber);
+        params=params.append('instrument', instrument);
+        console.log('params: '+ params);
         return this.http.get(BASE_URL + 'airline/getschedulesbyfilter?' + params);
     }
 
@@ -62,4 +66,16 @@ export  class FlightBookingService {
         return this.http.get(BASE_URL + 'airline/getairlinebyflightnumber/' + flightNumber);
 
     }
+
+    getflightschedules(oneWay: boolean, fromPlace: string, toPlace: string, startDate: string, endDtate: string) {
+        let params = new HttpParams();
+        params=params.append('oneWay', oneWay);
+        params=params.append('fromPlace', fromPlace);
+        params=params.append('toPlace', toPlace);
+        params=params.append('startDate', startDate);
+        params=params.append('endDate', endDtate);
+        console.log('params: '+ params);
+        return this.http.get(BASE_URL + 'airline/getflightschedules?' + params);
+    }
+
 }

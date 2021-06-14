@@ -21,7 +21,8 @@ import { Globals } from './Globals';
 import { AdminAddScheduleComponent } from './admin-add-schedule/admin-add-schedule.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
-
+import {MatTableModule} from '@angular/material/table';
+import { TicketBookingService } from './ticket-booking-service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,9 +38,9 @@ import {MatSelectModule} from '@angular/material/select';
   imports: [
     BrowserModule,
     AppRoutingModule, FormsModule, HttpClientModule, NgbModule, MDBBootstrapModule.forRoot(),
-    NavbarModule, WavesModule, ButtonsModule, ReactiveFormsModule, BrowserAnimationsModule, MatSelectModule
+    NavbarModule, WavesModule, ButtonsModule, ReactiveFormsModule, BrowserAnimationsModule, MatSelectModule, MatTableModule
     ],
-  providers: [FlightBookingService, Globals],
+  providers: [FlightBookingService, TicketBookingService, Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

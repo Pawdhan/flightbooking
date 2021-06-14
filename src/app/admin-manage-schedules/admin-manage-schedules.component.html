@@ -39,9 +39,9 @@
 
 </div>
 <div *ngIf="search">
-<h4 style="text-align: center;">Search Results</h4>
-<br/><br/>
-<div class="container" *ngIf="airlineSchedules && airlineSchedules.length > 0">
+    <br/>
+<h3 style="text-align: center;">Search Results</h3>
+    <div class="container" *ngIf="airlineSchedules && airlineSchedules.length > 0">
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -51,7 +51,6 @@
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Cost</th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -59,11 +58,17 @@
                 <td>{{air.airline}}</td>
                 <td>{{air.fromPlace}}</td>
                 <td>{{air.toPlace}}</td>
-                <td>{{air.startDate}} {{air.startTime}}</td>
-                <td>{{air.endDate}}{{air.endTime}}</td>
+                <td>{{air.startDate}} &nbsp;{{air.startTime}}</td>
+                <td>{{air.endDate}} &nbsp;{{air.endTime}}</td>
                 <td>{{air.cost}}</td>
             </tr>
         </tbody>
     </table>
 </div>
+<div class="row col-12">
+    <div class="col-5">&nbsp;</div>
+    <div class="col-2"><button (click)='clearSearch()'>Clear Search</button></div>
+    <div class="col-5">&nbsp;</div>
+</div>
+
 </div>

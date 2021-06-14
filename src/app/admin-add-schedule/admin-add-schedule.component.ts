@@ -66,7 +66,8 @@ export class AdminAddScheduleComponent implements OnInit {
       this.airlineSchedule.airline = this.airline.airline;
       this.airlineSchedule.flightNumber = this.airline.flightNumber;
       this.flightService.addAirlineSchedule(this.airlineSchedule).subscribe(res => {
-        this.airlineSchedule = res as AirlineSchedule;
+        alert('Schedule added sucessfully!');
+        this.onReset();
       }, error => {
         alert('Error while adding schedule');
         this.onReset();

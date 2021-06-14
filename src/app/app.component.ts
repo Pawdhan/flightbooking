@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from './entity/User';
 import { Globals } from './Globals';
 
 @Component({
@@ -19,5 +20,6 @@ export class AppComponent {
   logOut() {
     this.globals.validated = false;
     this.globals.role = "";
+    this.globals.user = new User();
   }
 }

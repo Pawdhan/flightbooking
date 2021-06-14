@@ -1,5 +1,5 @@
 <br/><br/>
-
+<div *ngIf="!continue">
 <div class="row col-12">
     <div class="col-2">&nbsp;</div>
     <div class="col-4"><input type="radio" name="trip" value="ONE_WAY" [(ngModel)]='trip'>&nbsp;One way</div>
@@ -20,58 +20,124 @@
     <div class="col-4">Return Journey: <input type="date" [(ngModel)]='toDate'></div>
     <div class="col-2">&nbsp;</div>
 </div>
+<div class="row col-12">
+    <div class="col-5">&nbsp;</div>
+    <div class="col-2"><button (click)='getFlightSchedules()'>Search</button></div>
+    <div class="col-5">&nbsp;</div>
+</div>
 <br/>
 <br/>
 
 <div class="row col-md-12">
-    <div class="col-md-6">
+    <div class="col-md-6" *ngIf="flightSchedules && flightSchedules.onwardSchedules && flightSchedules.onwardSchedules.length > 0">
 
-        <div class="container">
-            <table class="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th>Airline</th>
-                        <th>Logo</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Indigo</td>
-                        <td>Logo</td>
-                        <td>Rs 3000</td>
-                    </tr>
-                    <tr>
-                        <td>Indigo</td>
-                        <td>Logo</td>
-                        <td>Rs 3000</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
+        <div class="example-container mat-elevation-z8">
+            <mat-table #table [dataSource]="onwardData">
+          
+              <ng-container matColumnDef="position">
+                <mat-header-cell *matHeaderCellDef> SL.No </mat-header-cell>
+                <mat-cell *matCellDef="let element; let i=index;"> {{i+1}} </mat-cell>
+              </ng-container>
+          
+              <ng-container matColumnDef="airline">
+                <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.airline}} </mat-cell>
+              </ng-container>
+          
+              <ng-container matColumnDef="flightNumber">
+                <mat-header-cell *matHeaderCellDef> Flight Number </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.flightNumber}} </mat-cell>
+              </ng-container>
+          
+              <ng-container matColumnDef="cost">
+                <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.cost}} </mat-cell>
+              </ng-container>
+          
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row (click)="highlightOnward(row, i)" *matRowDef="let row; let i=index; columns: displayedColumns;" [ngClass]="{'highlightTableColor': selectedRowIndex1 == i}"></mat-row>
+            </mat-table>
+          </div>
+          
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" *ngIf="flightSchedules && flightSchedules.returnSchedules && flightSchedules.returnSchedules.length > 0">
         
-        <div class="container">
-            <table class="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th>Logo</th>
-                        <th>Name</th>
-                        <th>Contact Number</th>
-                        <th>Address</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>logo</td>
-                        <td>Indigo</td>
-                        <td>948488484</td>
-                        <td>Bangalore</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="example-container mat-elevation-z8">
+            <mat-table #table [dataSource]="returnData">
+          
+              <ng-container matColumnDef="position">
+                <mat-header-cell *matHeaderCellDef> SL.No </mat-header-cell>
+                <mat-cell *matCellDef="let element; let i=index;"> {{i+1}} </mat-cell>
+              </ng-container>
+          
+              <ng-container matColumnDef="airline">
+                <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.airline}} </mat-cell>
+              </ng-container>
+          
+              <ng-container matColumnDef="flightNumber">
+                <mat-header-cell *matHeaderCellDef> Flight Number </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.flightNumber}} </mat-cell>
+              </ng-container>
+          
+              <ng-container matColumnDef="cost">
+                <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.cost}} </mat-cell>
+              </ng-container>
+          
+              <mat-header-row *matHeaderRowDef="displayedColumnsReturn"></mat-header-row>
+              <mat-row (click)="highlightReturn(row, i)" *matRowDef="let row; let i=index; columns: displayedColumns;" [ngClass]="{'highlightTableColor': selectedRowIndex2 == i}"></mat-row>
+            </mat-table>
+          </div>
+    </div>
+</div>
+<br/>
+<div class="row col-12" *ngIf="flightSchedules && flightSchedules.onwardSchedules  && flightSchedules.onwardSchedules.length > 0">
+    <div class="col-2"><button (click)='updateData()'>Continue</button></div>
+    <div class="col-10">&nbsp;</div>
+</div>
+</div>
+
+<div *ngIf="continue">
+    <div class="row col-12">
+        <div class="col-4">&nbsp;</div>
+        <div class="col-2">Select Seat: </div>
+        <div class="col-2">
+          <mat-form-field>
+              <mat-select name="seat" [(value)]="bookFlight.seatNumber" placeholder="Select">
+                <mat-option *ngFor="let seat of seats" [value]="seat">
+                  {{seat}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>      
         </div>
+        <div class="col-4">&nbsp;</div>
+    </div>
+    <div class="row col-12">
+        <div class="col-4">&nbsp;</div>
+        <div class="col-2">Select Meal Type: </div>
+        <div class="col-2">
+          <mat-form-field>
+              <mat-select name="meal" [(value)]="bookFlight.meal" placeholder="Select">
+                <mat-option *ngFor="let meal of meals" [value]="meal">
+                  {{meal}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>      
+        </div>
+        <div class="col-4">&nbsp;</div>
+    </div>
+    
+    <div class="row col-12">
+        <div class="col-4">&nbsp;</div>
+        <div class="col-2"><b>Total Cost</b>: &nbsp;{{bookFlight.cost}}</div>
+        <div class="col-4">&nbsp;</div>
+    </div>
+
+    <br/>
+    <div class="row col-12">
+        <div class="col-5">&nbsp;</div>
+        <div class="col-2"><button (click)='bookTicket()'>Checkout</button></div>
+        <div class="col-5">&nbsp;</div>
     </div>
 </div>
