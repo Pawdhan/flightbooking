@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminAddScheduleComponent } from './admin-add-schedule/admin-add-schedule.component';
 import { AdminManageAirlinesComponent } from './admin-manage-airlines/admin-manage-airlines.component';
 import { AdminManageSchedulesComponent } from './admin-manage-schedules/admin-manage-schedules.component';
+import { AuthGuard } from './auth-guard';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserBookFlightComponent } from './user-book-flight/user-book-flight.component';
@@ -14,43 +15,56 @@ const routes: Routes = [
 
   {
     path: 'login',
-    component: LoginComponent
-
+    component: LoginComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
+    canActivate: [AuthGuard],
+    data: {roles: 'USER'}
 
   },
   {
     path: 'manageairlines',
-    component: AdminManageAirlinesComponent
-
+    component: AdminManageAirlinesComponent,
+    canActivate: [AuthGuard],
+    data: {roles: 'ADMIN'}
+    
   },
   {
     path: 'manageschedules',
-    component: AdminManageSchedulesComponent
+    component: AdminManageSchedulesComponent,
+    canActivate: [AuthGuard],
+    data: {roles: 'ADMIN'}
 
   },
   {
     path: 'addschedule',
-    component: AdminAddScheduleComponent
+    component: AdminAddScheduleComponent,
+    canActivate: [AuthGuard],
+    data: {roles: 'ADMIN'}
 
   },
   {
     path: 'bookflight',
-    component: UserBookFlightComponent
+    component: UserBookFlightComponent,
+    canActivate: [AuthGuard],
+    data: {roles: 'USER'}
 
   },
   {
     path: 'bookinghistory',
-    component: UserBookingHistoryComponent
+    component: UserBookingHistoryComponent,
+    canActivate: [AuthGuard],
+    data: {roles: 'USER'}
 
   },
   {
     path: 'managebookings',
-    component: UserManageBookingsComponent
-
+    component: UserManageBookingsComponent,
+    canActivate: [AuthGuard],
+    data: {roles: 'USER'}
   },
 ];
 

@@ -40,6 +40,8 @@ export class LoginComponent implements OnInit {
       this.admin.password = this.f.password.value;
       this.flightService.adminLogin(this.admin).subscribe(res => {
         alert('Login Successfull!');
+        localStorage.setItem('role', 'ADMIN');
+        localStorage.setItem('valid', 'true');
         this.submitted = true;
         this.global.validated = true;
         this.navigate();        
@@ -50,6 +52,9 @@ export class LoginComponent implements OnInit {
       this.flightService.loginUser(this.f.email.value, this.f.password.value).subscribe(res => {
         alert("Login successfull!");
         this.global.user = res as User;
+        localStorage.setItem('role', 'USER');
+        localStorage.setItem('valid', 'true');
+        localStorage.setItem('currentUser', JSON.stringify(this.global.user));
         this.submitted = true;
         this.global.validated = true;
         this.navigate();           

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../entity/User';
 import { FlightBookingService } from '../flight-booking-service';
+import { Globals } from '../Globals';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,8 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   submitted = false;
   user: User = new User();
-  constructor(private formBuilder: FormBuilder, private router: Router, private flightService: FlightBookingService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, 
+    public global: Globals, private flightService: FlightBookingService) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({

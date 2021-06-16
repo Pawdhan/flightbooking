@@ -21,7 +21,7 @@
 <button *ngIf="globals.validated" mat-flat-button style="background: #e1eedd;" (click)="logOut()">Log out</button>
 </mat-toolbar>
 
-<div *ngIf="globals.role==''">
+<div *ngIf="globals.role==null || globals.role==''">
   <div class="container">
   <div class="centerme">
     <mat-card>

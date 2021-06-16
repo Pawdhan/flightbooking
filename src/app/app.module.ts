@@ -28,6 +28,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
+import { AuthGuard } from './auth-guard';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import {MatIconModule} from '@angular/material/icon';
     NavbarModule, WavesModule, ButtonsModule, ReactiveFormsModule, BrowserAnimationsModule, MatSelectModule, MatTableModule,
     MatCardModule, MatToolbarModule, MatButtonModule, MatListModule, MatIconModule
     ],
-  providers: [FlightBookingService, TicketBookingService, Globals],
+  providers: [FlightBookingService, TicketBookingService, Globals, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

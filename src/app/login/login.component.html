@@ -1,4 +1,4 @@
-<div *ngIf="!global.validated">
+<div *ngIf="!global.validated && global.role !=''">
 
     <h2>Login</h2>
     <form [formGroup]="loginForm">
