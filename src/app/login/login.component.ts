@@ -31,9 +31,6 @@ export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   onSubmit() {
-    // this.submitted = true;
-    // this.global.validated = true;
-    // this.navigate();
 
     if(this.global.role == "ADMIN") {
       this.admin.email = this.f.email.value;
@@ -46,7 +43,7 @@ export class LoginComponent implements OnInit {
         this.global.validated = true;
         this.navigate();        
       }, error => {
-        alert(error.error.message);
+        alert('Invalid username or password!');
       });
     } else {
       this.flightService.loginUser(this.f.email.value, this.f.password.value).subscribe(res => {
@@ -59,7 +56,7 @@ export class LoginComponent implements OnInit {
         this.global.validated = true;
         this.navigate();           
       }, error => {
-        alert(error.error.message);
+        alert('Invalid username or password!');
       });
     }
   } 

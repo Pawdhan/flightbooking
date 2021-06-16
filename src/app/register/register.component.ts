@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
       this.submitted = true;
       this.router.navigate(['/login']);
     }, error => {
-      alert(error.error.message);
+      alert('Error while registering');
     })
 
     }
