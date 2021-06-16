@@ -1,49 +1,40 @@
+<mat-toolbar>
+  <span>Flight Booking</span>
+  <mat-nav-list class="list-horizontal">
+    <mat-list-item *ngIf="globals.role=='ADMIN' && globals.validated">
+     <button mat-flat-button style="background: #e1eedd;" (click)="navigate('/manageschedules')">Manage Schedules</button>
+   </mat-list-item>
+    <mat-list-item *ngIf="globals.role=='ADMIN' && globals.validated">
+     <button mat-flat-button style="background: #e1eedd;" (click)="navigate('/manageairlines')">Manage Airlines</button>
+   </mat-list-item>
+    <mat-list-item *ngIf="globals.role=='USER' && globals.validated">
+     <button mat-flat-button style="background: #e1eedd;" (click)="navigate('/bookflight')">Book Flight</button>
+   </mat-list-item>
+   <mat-list-item *ngIf="globals.role=='USER' && globals.validated">
+    <button mat-flat-button style="background: #e1eedd;" (click)="navigate('/managebookings')">Manage Bookings</button>
+   </mat-list-item>
+   <mat-list-item *ngIf="globals.role=='USER' && globals.validated">
+    <button mat-flat-button style="background: #e1eedd;" (click)="navigate('/bookinghistory')">Booking History</button>
+  </mat-list-item>  
+</mat-nav-list>
+<span class="example-spacer"></span>
+<button *ngIf="globals.validated" mat-flat-button style="background: #e1eedd;" (click)="logOut()">Log out</button>
+</mat-toolbar>
+
 <div *ngIf="globals.role==''">
-  <br/><br/><br/><br/><br/>
-  <div class="row col-12">
-    <div class="col-4">&nbsp;</div>
-    <div class="col-2"><button (click)='onSelect("ADMIN")'><a routerLink="/login">Admin</a></button>&nbsp;</div>
-    <div class="col-2"><button (click)='onSelect("USER")'><a routerLink="/login">User</a></button></div>
-    <div class="col-4">&nbsp;</div>
-  </div>
-</div>
-
-<div *ngIf="globals.role=='ADMIN' && globals.validated">
-  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs" style="padding: 1%;">
-    <li style="width: 15%; font-size: large;">
-      <b>Flight Booking</b>
-    </li>
-    <li [ngbNavItem]="1" style="width: 15%;">
-      <a routerLink="/manageschedules">Manage Schedules</a>
-    </li>
-    <li [ngbNavItem]="2" style="width: 15%;">
-      <a routerLink="/manageairlines">Manage Airlines</a>
-    </li>
-    <li [ngbNavItem]="3" style="width: 55%; text-align: right;">
-      <button (click)='logOut()'> <a routerLink="/">Log out</a></button>
-    </li>
-  </ul>
-</div>
-
-<div *ngIf="globals.role=='USER' && globals.validated">
-  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs" style="padding: 1%;">
-    <li style="width: 15%; font-size: large;">
-      <b>Flight Booking</b>
-    </li>
-    <li [ngbNavItem]="1" style="width: 10%;">
-      <a routerLink="/bookflight">Book Flight</a>
-    </li>
-    <li [ngbNavItem]="2" style="width: 15%;">
-      <a routerLink="/managebookings">Manage Bookings</a>
-    </li>
-    <li [ngbNavItem]="2" style="width: 15%;">
-      <a routerLink="/bookinghistory">Booking History</a>
-    </li>
-    <li [ngbNavItem]="3" style="width: 45%; text-align: right;">
-      <button (click)='logOut()'> <a routerLink="/">Log out</a></button>
-    </li>
-  </ul>
-  
+  <div class="container">
+  <div class="centerme">
+    <mat-card>
+        <div class="example-form">
+          <div class="example-full-width">
+            <button mat-raised-button color="primary" (click)='onSelect("ADMIN")'>Admin</button>&nbsp;</div>
+          <br/><br/><br/>
+          <div class="example-full-width">
+            <button mat-raised-button color="primary" (click)='onSelect("USER")'>User</button></div>
+        </div>
+    </mat-card>
+    </div>
+  </div>  
 </div>
 
 <router-outlet></router-outlet>

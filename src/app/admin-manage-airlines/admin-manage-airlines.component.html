@@ -32,7 +32,7 @@
 
 <div class="row col-12">
     <div class="col-5">&nbsp;</div>
-    <div class="col-2"><button (click)='addAirline()'>Add New Airline</button></div>
+    <div class="col-2"><button  class="other-button" (click)='addAirline()'>Add New Airline</button></div>
     <div class="col-5">&nbsp;</div>
 </div>
 <br/><br/>
@@ -56,7 +56,7 @@
                 <td>{{air.flightNumber}}</td>
                 <td>{{air.contactNumber}}</td>
                 <td>{{air.contactAddress}}</td>
-                <td><button (click)="addSchedule(air.flightNumber)">Add Schedule</button></td>
+                <td><button class="other-button" (click)="addSchedule(air.flightNumber)">Add Schedule</button></td>
             </tr>
         </tbody>
     </table>

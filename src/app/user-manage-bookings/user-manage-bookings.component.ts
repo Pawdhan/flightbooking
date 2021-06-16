@@ -17,14 +17,23 @@ export class UserManageBookingsComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.getTicketBookingHistory();
+    this.getTicketBooking();
   }
 
-  getTicketBookingHistory() {
+  getTicketBooking() {
     this.flightBookingService.getActiveUserBookings(this.global.user.email).subscribe(res => {
       this.ticketBookings = res as Book_Flight[];
     }, error => {
       alert('Error while fetching tickets');
+    })
+  }
+
+  cancelTicket(pnrNumber: number) {
+    this.flightBookingService.cancelTicket(pnrNumber).subscribe(res => {
+     alert('Ticket cancelled successfully');
+     this.getTicketBooking();
+    }, error => {
+      alert('Error while cancelling');
     })
   }
 }

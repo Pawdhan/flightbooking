@@ -9,6 +9,7 @@
                 <th>Airline</th>
                 <th>Trip</th>
                 <th>Price</th>
+                <th>Cancel</th>
             </tr>
         </thead>
         <tbody>
@@ -18,6 +19,7 @@
                 <td>{{ticket.onwardAirline}}</td>
                 <td>{{ticket.trip}}</td>
                 <td>{{ticket.cost}}</td>
+                <td><mat-icon (click)="cancelTicket(ticket.pnrNumber)">delete</mat-icon></td>
             </tr>
         </tbody>
     </table>

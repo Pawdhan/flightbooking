@@ -34,7 +34,5 @@ export class AdminManageAirlinesComponent implements OnInit {
 
   addSchedule(flightNumber: number) {
     this.router.navigate(['/addschedule'], { queryParams: {flightNumber : flightNumber} });
-
-
   }
 }

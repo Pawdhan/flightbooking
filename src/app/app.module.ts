@@ -14,6 +14,7 @@ import { FlightBookingService } from './flight-booking-service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { TicketBookingService } from './ticket-booking-service';
 // For MDB Angular Free
 import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md';
 import { RegisterComponent } from './register/register.component'
@@ -22,7 +23,12 @@ import { AdminAddScheduleComponent } from './admin-add-schedule/admin-add-schedu
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
-import { TicketBookingService } from './ticket-booking-service';
+import {MatCardModule} from '@angular/material/card';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +44,8 @@ import { TicketBookingService } from './ticket-booking-service';
   imports: [
     BrowserModule,
     AppRoutingModule, FormsModule, HttpClientModule, NgbModule, MDBBootstrapModule.forRoot(),
-    NavbarModule, WavesModule, ButtonsModule, ReactiveFormsModule, BrowserAnimationsModule, MatSelectModule, MatTableModule
+    NavbarModule, WavesModule, ButtonsModule, ReactiveFormsModule, BrowserAnimationsModule, MatSelectModule, MatTableModule,
+    MatCardModule, MatToolbarModule, MatButtonModule, MatListModule, MatIconModule
     ],
   providers: [FlightBookingService, TicketBookingService, Globals],
   bootstrap: [AppComponent]

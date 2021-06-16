@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import Airline from '../entity/Airline';
 import { AirlineSchedule } from '../entity/AirlineSchedule';
 import { FlightBookingService } from '../flight-booking-service';
 
@@ -15,10 +14,12 @@ export class AdminManageSchedulesComponent implements OnInit {
   instrument: string = "";
   airlines: String[] = [];
   airlineSchedules: AirlineSchedule[] = [];
+  filteredSchedules: AirlineSchedule[] = [];
   constructor(private flightBookingService: FlightBookingService) { }
 
   ngOnInit(): void {
     this.getAirlines();
+    this.getAllSchedules();
   }
 
   getAirlines() {
@@ -29,11 +30,21 @@ export class AdminManageSchedulesComponent implements OnInit {
     });
   }
 
+  getAllSchedules() {
+    this.flightBookingService.getAllAirlineSchedules().subscribe(res => {
+      this.airlineSchedules = res as AirlineSchedule[];
+    }, error => {
+      console.log('Error while fetching schedules');
+    });
+  }
+
   searchResults() {
     this.search = true;
     this.flightBookingService.searchBySchedule(this.selectedAirline, this.flightNumber, this.instrument)
     .subscribe(res => {
-      this.airlineSchedules = res as AirlineSchedule[];
+      this.filteredSchedules = res as AirlineSchedule[];
+    }, error => {
+      alert('Error while getting schedules');
     })
   }
 
@@ -42,6 +53,16 @@ export class AdminManageSchedulesComponent implements OnInit {
     this.selectedAirline = "";
     this.flightNumber = 0;
     this.instrument = "";
-    this.airlineSchedules = [];
+    this.filteredSchedules = [];
+    this.getAllSchedules();
+  }
+
+  deleteSchedule(id: number) {
+    this.flightBookingService.deleteSchedule(id).subscribe(res => {
+      alert('Deleted Successfully');
+      this.clearSearch();
+    }, error => {
+      alert('Error while deleting schedule');
+    });
   }
 }

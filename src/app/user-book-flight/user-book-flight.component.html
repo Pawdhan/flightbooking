@@ -22,14 +22,16 @@
 </div>
 <div class="row col-12">
     <div class="col-5">&nbsp;</div>
-    <div class="col-2"><button (click)='getFlightSchedules()'>Search</button></div>
+    <div class="col-2"><button  class="search-button" (click)='getFlightSchedules()'>Search</button></div>
     <div class="col-5">&nbsp;</div>
 </div>
 <br/>
 <br/>
 
 <div class="row col-md-12">
+    
     <div class="col-md-6" *ngIf="flightSchedules && flightSchedules.onwardSchedules && flightSchedules.onwardSchedules.length > 0">
+        <h4 style="text-align: center;">Onward Journey</h4>
 
         <div class="example-container mat-elevation-z8">
             <mat-table #table [dataSource]="onwardData">
@@ -61,7 +63,8 @@
           
     </div>
     <div class="col-md-6" *ngIf="flightSchedules && flightSchedules.returnSchedules && flightSchedules.returnSchedules.length > 0">
-        
+        <h4 style="text-align: center;">Return Journey</h4>
+
         <div class="example-container mat-elevation-z8">
             <mat-table #table [dataSource]="returnData">
           
@@ -93,7 +96,7 @@
 </div>
 <br/>
 <div class="row col-12" *ngIf="flightSchedules && flightSchedules.onwardSchedules  && flightSchedules.onwardSchedules.length > 0">
-    <div class="col-2"><button (click)='updateData()'>Continue</button></div>
+    <div class="col-2"><button  class="other-button" (click)='updateData()'>Continue</button></div>
     <div class="col-10">&nbsp;</div>
 </div>
 </div>
@@ -137,7 +140,7 @@
     <br/>
     <div class="row col-12">
         <div class="col-5">&nbsp;</div>
-        <div class="col-2"><button (click)='bookTicket()'>Checkout</button></div>
+        <div class="col-2"><button  class="save-button" (click)='bookTicket()'>Checkout</button></div>
         <div class="col-5">&nbsp;</div>
     </div>
 </div>

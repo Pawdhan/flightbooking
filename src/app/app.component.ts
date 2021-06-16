@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from './entity/User';
 import { Globals } from './Globals';
 
@@ -9,12 +10,17 @@ import { Globals } from './Globals';
 })
 export class AppComponent {
   active = 1;
-  constructor(public globals: Globals) {
+  constructor(public globals: Globals, private router: Router) {
     this.globals.role = "";
     this.globals.validated = false;
   }
   onSelect(value: string) {
     this.globals.role = value;
+    this.router.navigate(['/login']);
+  }
+
+  navigate(page: string) {
+    this.router.navigate([page]);
   }
 
   logOut() {

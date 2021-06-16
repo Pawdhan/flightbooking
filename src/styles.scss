@@ -3,5 +3,67 @@
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
 
-html, body { height: 100%; }
+html, body { height: 100%; background-color: #fefbe9;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.meu-button {
+    background-color: #e1eedd;
+}
+
+.logut-button {
+    background-color: #e1eedd;
+    text-align: right;
+}
+
+.save-button{
+  background-color: #478549; /* Green */
+  border: none;
+  color: white;
+  padding: 5%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.other-button {
+    background-color: #3d84c1;
+    border: none;
+    color: white;
+    padding: 5%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.search-button {
+    background-color: #c1a93d;
+    border: none;
+    color: white;
+    padding: 5%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.user-button {
+    background-color: #28d0c0;
+    border: none;
+    color: white;
+    padding: 15px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.admin-button {
+    background-color: #28d0c0;
+    border: none;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}

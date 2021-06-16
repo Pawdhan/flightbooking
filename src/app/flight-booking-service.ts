@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import Airline from './entity/Airline';
 import { Admin, User } from './entity/User';
 import { AirlineSchedule } from './entity/AirlineSchedule';
-const BASE_URL = "http://localhost:8282/admin/";
+const BASE_URL = "http://ec2-3-95-243-8.compute-1.amazonaws.com:8282/admin/";
 @Injectable()//Bean
 export  class FlightBookingService {
 
@@ -53,6 +53,10 @@ export  class FlightBookingService {
         });
     }
 
+    getAllAirlineSchedules() {
+        return this.http.get(BASE_URL + 'airline/getallairlineschedules');
+    }
+
     searchBySchedule(airline: string, flightNumber: number, instrument: string) {
         let params = new HttpParams();
         params=params.append('airline', airline);
@@ -78,4 +82,7 @@ export  class FlightBookingService {
         return this.http.get(BASE_URL + 'airline/getflightschedules?' + params);
     }
 
+    deleteSchedule(id: number) {
+        return this.http.delete(BASE_URL + 'airline/deleteschedule/' + id);
+    }
 }

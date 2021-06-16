@@ -32,16 +32,45 @@
   
   <div class="row col-12">
     <div class="col-5">&nbsp;</div>
-    <div class="col-2"><button (click)='searchResults()'>Search</button></div>
+    <div class="col-2"><button class="search-button" (click)='searchResults()'>Search</button></div>
     <div class="col-5">&nbsp;</div>
 </div>
-  <br/><br/>
+    <br/><br/>
+<div class="container" *ngIf="airlineSchedules && airlineSchedules.length > 0">
+    <h3 style="text-align: center;">All Schedules</h3>
+      <table class="table table-striped table-bordered">
+          <thead>
+              <tr>
+                  <th>Airline</th>
+                  <th>From</th>
+                  <th>To</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Cost</th>
+                  <th>Delete</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let air of airlineSchedules">
+                  <td>{{air.airline}}</td>
+                  <td>{{air.fromPlace}}</td>
+                  <td>{{air.toPlace}}</td>
+                  <td>{{air.startDate}} &nbsp;{{air.startTime}}</td>
+                  <td>{{air.endDate}} &nbsp;{{air.endTime}}</td>
+                  <td>{{air.cost}}</td>
+                  <td><mat-icon (click)="deleteSchedule(air.id)" aria-hidden="false" aria-label="Example home icon">delete</mat-icon></td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
 
 </div>
+
+
 <div *ngIf="search">
     <br/>
 <h3 style="text-align: center;">Search Results</h3>
-    <div class="container" *ngIf="airlineSchedules && airlineSchedules.length > 0">
+    <div class="container" *ngIf="filteredSchedules && filteredSchedules.length > 0">
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -51,23 +80,25 @@
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Cost</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let air of airlineSchedules">
+            <tr *ngFor="let air of filteredSchedules">
                 <td>{{air.airline}}</td>
                 <td>{{air.fromPlace}}</td>
                 <td>{{air.toPlace}}</td>
                 <td>{{air.startDate}} &nbsp;{{air.startTime}}</td>
                 <td>{{air.endDate}} &nbsp;{{air.endTime}}</td>
                 <td>{{air.cost}}</td>
+                <td><mat-icon (click)="deleteSchedule(air.id)" aria-hidden="false" aria-label="Example home icon">delete</mat-icon></td>
             </tr>
         </tbody>
     </table>
 </div>
 <div class="row col-12">
     <div class="col-5">&nbsp;</div>
-    <div class="col-2"><button (click)='clearSearch()'>Clear Search</button></div>
+    <div class="col-2"><button  class="other-button" (click)='clearSearch()'>Clear Search</button></div>
     <div class="col-5">&nbsp;</div>
 </div>
 
