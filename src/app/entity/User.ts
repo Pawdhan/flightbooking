@@ -5,6 +5,6 @@ export class User {
 }
 
 export class Admin {
-    email: string = "admin";
-    password: string = "123";
+    username: string = "";
+    password: string = "";
 }

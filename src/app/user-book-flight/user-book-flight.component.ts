@@ -74,7 +74,7 @@ export class UserBookFlightComponent implements OnInit {
       alert('Ticket booked successfully!');
       this.router.navigate(['/managebookings']);
     }, error => {
-      alert('Error while booking ticket!');
+      // alert('Error while booking ticket!');
     });
   }
 

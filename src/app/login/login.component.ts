@@ -33,15 +33,18 @@ export class LoginComponent implements OnInit {
   onSubmit() {
 
     if(this.global.role == "ADMIN") {
-      this.admin.email = this.f.email.value;
+      this.admin.username = this.f.email.value;
       this.admin.password = this.f.password.value;
       this.flightService.adminLogin(this.admin).subscribe(res => {
+      const tokenResult = JSON.parse(JSON.stringify(res));
+        
         alert('Login Successfull!');
         localStorage.setItem('role', 'ADMIN');
         localStorage.setItem('valid', 'true');
         this.submitted = true;
         this.global.validated = true;
         this.navigate();        
+      
       }, error => {
         alert('Invalid username or password!');
       });

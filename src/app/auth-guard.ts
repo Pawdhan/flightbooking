@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate, CanActivateChild } from '@angular/router';
 import { Observable } from 'rxjs';
+import { User } from './entity/User';
 import { Globals } from './Globals';
 
 @Injectable()
@@ -14,7 +15,19 @@ export class AuthGuard implements CanActivate{
         this.router.navigate(['/']);
         return false;
     } else {
-        return true;
+        if(route.data.roles && route.data.roles != this.global.role) {
+            this.global.validated = false;
+            this.global.role = "";
+            this.global.user = new User();
+            localStorage.removeItem('currentUser');
+            localStorage.removeItem('role');
+            localStorage.removeItem('valid');
+            sessionStorage.removeItem('token');
+            this.router.navigate(['/']);
+            return false;
+        } else {
+            return true;
+        }
     }
 }
 

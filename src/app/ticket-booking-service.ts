@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from "@angular/common/http";
 import Book_Flight from './entity/Book_Flight';
-const BASE_URL = "http://ec2-3-95-243-8.compute-1.amazonaws.com:8282/user/booking/";
+const BASE_URL = "http://localhost:8282/user/booking/";
 @Injectable()//Bean
 export  class TicketBookingService {
 
